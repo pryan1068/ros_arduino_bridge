@@ -86,6 +86,29 @@
     setMotorSpeed(LEFT, leftSpeed);
     setMotorSpeed(RIGHT, rightSpeed);
   }
+#elif defined ZUMO32U4_MOTOR_DRIVER
+  /* Include the Pololu library */
+  #include <Zumo32U4Motors.h>
+  Zumo32U4Motors motors;
+
+  /* Wrap the motor driver initialization */
+  void initMotorController() {
+//    motors.init();
+  }
+
+  /* Wrap the drive motor set speed function */
+  void setMotorSpeed(int i, int spd) {
+    if (i == LEFT)
+      motors.setLeftSpeed(spd);
+    else
+      motors.setRightSpeed(spd);
+  }
+
+  // A convenience function for setting both motor speeds
+  void setMotorSpeeds(int leftSpeed, int rightSpeed) {
+    setMotorSpeed(LEFT, leftSpeed);
+    setMotorSpeed(RIGHT, rightSpeed);
+  }
 #else
   #error A motor driver must be selected!
 #endif

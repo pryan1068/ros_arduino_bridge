@@ -68,6 +68,27 @@
       return;
     }
   }
+#elif defined(ZUMO32U4)
+#include <Zumo32U4Encoders.h>
+
+  /* Create the encoders object */
+  Zumo32U4Encoders encoders;
+
+  /* Wrap the encoder reading function */
+  long readEncoder(int i) {
+    if (i == LEFT)
+      return encoders.getCountsLeft();
+    else
+      return encoders.getCountsRight();
+  }
+
+  /* Wrap the encoder reset function */
+  void resetEncoder(int i) {
+    if (i == LEFT)
+      return encoders.getCountsAndResetLeft();
+    else
+      return encoders.getCountsAndResetRight();
+  }
 #else
   #error A encoder driver must be selected!
 #endif
