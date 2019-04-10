@@ -85,9 +85,9 @@
   /* Wrap the encoder reset function */
   void resetEncoder(int i) {
     if (i == LEFT)
-      return encoders.getCountsAndResetLeft();
+      encoders.getCountsAndResetLeft();
     else
-      return encoders.getCountsAndResetRight();
+      encoders.getCountsAndResetRight();
   }
 #else
   #error A encoder driver must be selected!
